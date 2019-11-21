@@ -23,9 +23,8 @@ func main() {
 		{"first_name": "Victor", "last_name": "Nguyen", "age": 100, "class_name":"golang"},
 		{"first_name": "Anh", "last_name": "Dinh", "age":200, "class_name":"golang"}
 		]`
-	jsonData := []byte(inputJSON)
 	var outStudents []Student
-	err := json.Unmarshal(jsonData, &outStudents)
+	err := json.Unmarshal([]byte(inputJSON), &outStudents)
 	if err != nil {
 		fmt.Println(err)
 	}
