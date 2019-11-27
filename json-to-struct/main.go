@@ -31,4 +31,16 @@ func main() {
 	for _, st := range outStudents {
 		fmt.Printf("%+v\n", st)
 	}
+
+	// struct -> json string
+	bs, err := json.Marshal(outStudents)
+
+	if err != nil {
+		fmt.Println(bs)
+		return
+	}
+
+	jsonString := string(bs)
+
+	fmt.Println(jsonString)
 }
