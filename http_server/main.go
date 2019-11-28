@@ -11,10 +11,10 @@ type server struct{}
 
 // Student is a struct
 type Student struct {
-	FirstName string `json:"first_name" bson:"full_name" validate:"required"`
-	LastName  string `json:"last_name"`
-	Age       int    `json:"age"`
-	Class     string `json:"class_name"`
+	FirstName string `json:"first_name" bson:"first_name" validate:"required"`
+	LastName  string `json:"last_name" bson:"last_name"`
+	Age       int    `json:"age" bson:"age"`
+	Class     string `json:"class_name" bson:"class_name"`
 }
 
 var students = []Student{
@@ -62,4 +62,7 @@ We have our imports. log for logging some error if it happens. net/http because 
 
 Then we have a struct called server. It has no fields. We will add a method to this server ServeHTTP and that will satisfy the Handler interface. One thing you will notice in go we don't have to explicitly say the interface we are implementing. The compiler is smart enough to figure that out. In the ServeHTTP method we set httpStatus 200 to denote its the request was a success. We se the content type to application/json so the client understands when we send back json as payload. Finally we write
 {"message": "hello world"}
-To the response. */
+To the response.
+
+Reference 2: https://medium.com/statuscode/how-i-write-go-http-services-after-seven-years-37c208122831
+*/
