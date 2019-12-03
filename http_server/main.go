@@ -49,7 +49,8 @@ func main() {
 
 	s := &server{}
 	http.Handle("/", s)
-	http.Handle("/getStudents", s.GetStudents())
+	http.HandleFunc("/getStudents", s.GetStudents()))
+	//http.Handle("/getStudents", s.GetStudents())
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 

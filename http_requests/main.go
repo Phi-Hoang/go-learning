@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -34,7 +33,8 @@ func main() {
 	// fmt.Println(resp)
 	// fmt.Println(resp.Body)
 
-	body, err := ioutil.ReadAll(resp.Body)
+	var outStudents []Student
+	/* body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -42,11 +42,17 @@ func main() {
 	log.Println(string(body))
 
 	inputJSON := string(body)
-	var outStudents []Student
+
 	err = json.Unmarshal([]byte(inputJSON), &outStudents)
 	if err != nil {
 		fmt.Println(err)
+	} */
+
+	err = json.NewDecoder(resp.Body).Decode(&outStudents)
+	if err != nil {
+		log.Fatalf("Decode error: %v\n", err)
 	}
+
 	for _, st := range outStudents {
 		fmt.Printf("%+v\n", st)
 	}
