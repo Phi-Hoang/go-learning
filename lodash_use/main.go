@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Phi-Hoang/go-learning/lodash"
+	"github.com/phihdn/go-learning/lodash"
 )
 
 func main() {
